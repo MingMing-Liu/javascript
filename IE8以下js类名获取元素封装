@@ -1,0 +1,17 @@
+    //    ie8以下版本支持js类名查找的封装
+    function getClass(className) {
+        if (document.getElementsByClassName) {
+            return document.getElementsByClassName(className);
+        } else {
+            var arr = [];
+            var dom = document.getElementsByTagName("*");
+            for (var i = 0; i < dom.length; i++) {
+                if (dom[i].claaName == className) {
+                    arr.puth(dom[i]);
+                }
+            }
+            return arr;
+        }
+    };
+    
+    getClass("dome");
