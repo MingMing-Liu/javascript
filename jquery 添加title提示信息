@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>jquery添加title提示</title>
+</head>
+
+<body>
+    <p><a href="#" title="我是a标签的提示" class="tooltip">手动添加title提示</a></p>
+</body>
+<script type="text/javascript" src="http://img01.zhaopin.cn/2012/js/jquery-1.6.4.min.js"></script>
+<script>
+$(function() {
+    $('.tooltip').mouseover(function(e) {
+        this.myTitle = this.title;
+        this.title = "";
+        // 创建一个div
+        var tooltip = "<div id ='tooltip'>" + this.myTitle + "</div>"
+        $('body').append(tooltip); //将它追加到文档中
+        $('#tooltip')
+            .css({
+                "top": e.pageY + "px",
+                "left": e.pageX + "px"
+            }).show("fast"); //设置div的位置，并且显示
+    }).mouseout(function() {
+        this.title = this.myTitle;
+        $('#tooltip').remove(); //移除div
+    });
+});
+</script>
+
+</html>
