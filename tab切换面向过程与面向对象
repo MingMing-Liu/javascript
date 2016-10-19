@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+	 *{
+	 	margin: 0;
+	 	padding: 0;
+	 }
+		.wrap{width: 300px;height: 330px;background: yellow;margin: 100px auto;overflow: hidden;}
+		.top{height: 30px;width: 300px;background: teal;}
+		.top ul li{float: left;list-style: none;width: 100px;height: 30px;line-height:30px;color: #ffffff;text-align: center;}
+		.box{width: 900px;height: 300px;}
+		.box div{float: left;height: 300px;width: 300px;background: black;color: #ffffff;text-align: center;line-height: 300px;}
+	</style>
+</head>
+<body>
+	<div class="wrap">
+		<div class="top">
+			<ul>
+				<li>1</li>
+				<li>2</li>
+				<li>3</li>
+			</ul>
+		</div>
+		<div class="box">
+			<div>ONE</div>
+			<div>TWO</div>
+			<div>THREE</div>
+		</div>
+	</div>
+
+
+	<div class="wrap">
+		<div class="top">
+			<ul>
+				<li>1</li>
+				<li>2</li>
+				<li>3</li>
+			</ul>
+		</div>
+		<div class="box">
+			<div>ONE</div>
+			<div>TWO</div>
+			<div>THREE</div>
+		</div>
+	</div>
+
+	<script>
+
+	//面向过程 js
+		// var ul=document.getElementsByTagName('ul')[0],
+		// 		lis=ul.getElementsByTagName('li'),
+		// 		box=document.getElementsByClassName('box')[0],
+		// 		boxs=box.getElementsByTagName('div');
+		// 		for(var i=0;i<lis.length;i++){
+		// 			lis[i].index=i;
+		// 			lis[i].onclick=function(){
+		// 				// console.log(this.index);
+		// 				for(var j=0;j<lis.length;j++){
+		// 					lis[j].style.background="teal";
+		// 					boxs[j].style.display="none";
+		// 				}
+		// 				this.style.background="black";
+		// 				boxs[this.index].style.display="block";
+		// 			}
+		// 		}
+	
+
+	// 面向对象 js
+	// 
+	function Tab(lis,boxs){
+		this.lis=lis;
+		this.boxs=boxs;
+	}
+	Tab.prototype={
+		change:function(){
+			var that=this;
+			for(var i=0;i<lis.length;i++){
+				that.lis[i].index=i;
+				that.lis[i].onclick=function(){
+					for(var j=0;j<that.lis.length;j++){
+						that.lis[j].style.background="teal";
+						that.boxs[j].style.display="none";
+					}
+					that.lis[this.index].style.background="black";
+					that.boxs[this.index].style.display="block";
+				}
+			}
+		}
+	}
+
+	var ul=document.getElementsByTagName('ul')[0],
+		lis=ul.getElementsByTagName('li'),
+		box=document.getElementsByClassName('box')[0],
+		boxs=box.getElementsByTagName('div');
+	var ul1=document.getElementsByTagName('ul')[1],
+		lis1=ul1.getElementsByTagName('li'),
+		box1=document.getElementsByClassName('box')[1],
+		boxs1=box1.getElementsByTagName('div');
+
+
+	var tab=new Tab(lis,boxs);
+	tab.change();
+
+	var tab2=new Tab(lis1,boxs1);
+	tab2.change();
+	</script>
+</body>
+</html>
